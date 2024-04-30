@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Список задач {% endblock %}
+
+{% block content %}
+<style>
+    .spacer {
+        height: 200px;
+        /* Встановлюємо бажану висоту відступу */
+    }
+</style>
+
+<div class="bg-light rounded-3 p-sm-5 p-3 table-shadow">
+    <h2 class="text-center"><i class="fa-regular fa-bell"></i> Заявка #{{request_document.id }} {{ request_document.title }}</h2>
+    <div class="mb-3">
+        <a href="{% url 'index' %}" class="btn btn-success mt-3 rounded-20"><i class="fa-solid fa-arrow-left"></i>
+            Повернутися до списку</a>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="card-text"><b>Ціна [UAH]:</b> <code>{{ request_document.price }}</code></p>
+            <p class="card-text"><b>Дата складання договору:</b> <i class="text-muted">{% if request_document.date_conclusion %}{{ request_document.date_conclusion }}{% else %}---{% endif %}</i></p>
+            <p class="card-text"><b>Дата оплати:</b> <i class="text-muted">{% if request_document.date_payment %}{{ request_document.date_payment }}{% else %}---{% endif %}</i></p>
+            <p class="card-text"><b>Статус:</b> {{ request_document.status }}</p>
+            <p class="card-text"><b>Створено:</b> {{ request_document.created_at }}</p>
+            {% if request_document.document %}
+            <p class="card-text"><b>Файл документу:</b> <a class="btn btn-info rounded-20"
+                    href="{{ request_document.document.url }}"><i class="fa-solid fa-file"></i> {{ request_document.document.name }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h3 class="text-center"><i class="fa-solid fa-file-export"></i> Додати подію</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-success rounded-20"><i class="fa-solid fa-plus"></i> Додати
+                    подію</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="mb-3">
+        <h3 class="text-center"><i class="fa-solid fa-clock-rotate-left"></i> Історія подій</h3>
+        {% for event in event_list %}
+        <div class="card bg-light rounded-3 px-3 mt-2 mb-2 table-shadow" style="border: none;">
+            <div class="card-body">
+                <h5 class="text-primary">{{event.old_status}} <i class="fa-solid fa-arrow-right"></i>
+                    {{event.new_status}}
+                </h5>
+                <h4 class="flex-grow-1"><b>{{event.author}}: {{event.title}}</b></h4>
+                <p>{{event.detail}}</p>
+                <i class="text-muted">{{event.created_at}}</i>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="spacer"></div>
+{% endblock %}

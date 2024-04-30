@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Список задач {% endblock %}
+
+{% block content %}
+<style>
+    .spacer {
+        height: 400px;
+        /* Встановлюємо бажану висоту відступу */
+    }
+</style>
+
+<div class="bg-light rounded-3 p-sm-5 p-3 table-shadow">
+    <h1 class="text-center p-5">Лист очікування</h1>
+    <div class="mb-3">
+        <a href="{% url 'create_request' %}" class="btn btn-success mt-3 rounded-20"><i
+                class="fa-solid fa-file-circle-plus"></i> Додати заявку</a>
+    </div>
+    <hr>
+    <div class="mt-5 mb-5">
+        {% for doc in doc_list %}
+
+        <div class="card bg-light rounded-3 px-3 mt-2 mb-2 table-shadow" style="border: none;">
+            <div class="card-body d-flex align-items-center">
+                <h4 class="flex-grow-1"><b>#{{doc.id}}</b> {{doc.title}} <i class="text-muted"
+                        style="font-size: medium;">{{doc.created_at}}</i></h4>
+                <a href="request/{{doc.id}}/" class="btn btn-success mx-1" title="Переглянути"><i
+                        class="fa-solid fa-arrow-right"></i> Переглянути</a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="pagination justify-content-center ">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; &laquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Сторінка {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo; &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</div>
+
+<div class="spacer"></div>
+{% endblock %}

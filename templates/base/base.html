@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% load static %}
+
+    <link rel="icon" href="{% static 'base/favicon.ico' %}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{% static 'base/favicon.ico' %}" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="{% static 'base/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/style.css' %}" />
+
+    <title>Doc Manager - {% block title %} {% endblock %}</title>
+  </head>
+  <body>
+
+    <nav id='header' class="navbar mb-5 navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand mb-5 mb-md-0">
+          <img
+            id="logo"
+            src="{% static 'base/logo.png' %}"
+            alt="logo"
+            srcset=""
+          />
+        </a>
+
+
+        <button
+          class="navbar-toggler mb-5 mb-md-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container">{% block content %} {% endblock %}</div>
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted mt-5">
+    <!-- Section: Social media -->
+    <section id='connect' class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+    >
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Мої соц. мережі:</span>
+         <a target="_blank" href="https://t.me/heridium" class="btn me-2 ms-3 text-reset">
+          <i class="fab fa-2x fa-telegram"></i>
+        </a>
+        <a target="_blank" href="https://github.com/grebocheck" class="btn me-2 text-reset">
+          <i class="fab fa-2x fa-github"></i>
+        </a>
+          <a target="_blank" href="https://discordapp.com/users/460866779002961932/" class="btn me-2 text-reset">
+          <i class="fab fa-2x fa-discord"></i>
+        </a>
+      </div>
+      <!-- Left -->
+
+      <div class="me-5 d-lg-block">
+        <a class='btn rounded-pill bg-light' href="#header"><i class="fas fa-arrow-up fa-2x"></i></a>
+      </div>
+
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="py-5" style="background-color: rgba(0, 0, 0, 0.05);">
+      <div class="container text-center text-md-start">
+        <!-- Grid row -->
+        <div class="row">
+
+        <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
+          <a href="/">
+            <img class='img-fluid' src="{% static 'base/logo.png' %}" alt="logo" srcset="">
+          </a>
+        </div>
+
+
+          <!-- Grid column -->
+            <!--
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <h6 class="text-uppercase fw-bold mb-4">
+              More Projects
+            </h6>
+            <p>
+              <a href="https://jashann.github.io/Smart-Dictionary/" target="_blank" class="text-reset">Smart Dictionary</a>
+              <i class="fas fa-external-link-square-alt"></i>
+            </p>
+            <p>
+              <a href="http://jashann.github.io/" target="_blank" class="text-reset">Portfolio</a>
+              <i class="fas fa-external-link-square-alt"></i>
+            </p>
+            <p>
+              <a href="https://jashann.github.io/Aurora_Store/" target="_blank" class="text-reset">Aurora Store</a>
+              <i class="fas fa-external-link-square-alt"></i>
+            </p>
+          </div>
+          -->
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Контакти
+            </h6>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              gadzilayer@gmail.com
+            </p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  </footer>
+<!-- Footer -->
+
+   <script src="https://kit.fontawesome.com/2e22223133.js" crossorigin="anonymous"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

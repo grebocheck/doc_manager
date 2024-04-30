@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Список задач {% endblock %}
+
+{% block content %}
+<style>
+    .spacer {
+        height: 400px;
+        /* Встановлюємо бажану висоту відступу */
+    }
+</style>
+
+<div class="bg-light rounded-3 p-sm-5 p-3 table-shadow">
+    <h2 class="text-center">Створити заявку</h2>
+    <div class="mb-3">
+        <a href="{% url 'index' %}" class="btn btn-success mt-3 rounded-20"><i class="fa-solid fa-arrow-left"></i>
+            Повернутися до списку</a>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-success rounded-20"><i class="fa-solid fa-plus"></i> Створити</button>
+        </div>
+    </form>
+</div>
+<div class="spacer"></div>
+{% endblock %}

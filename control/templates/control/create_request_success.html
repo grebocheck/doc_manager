@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Список задач {% endblock %}
+
+{% block content %}
+<style>
+    .spacer {
+        height: 400px;
+        /* Встановлюємо бажану висоту відступу */
+    }
+</style>
+
+<div class="bg-light rounded-3 p-sm-5 p-3 table-shadow">
+    <h2 class="text-center">Вітаємо, заявка успішно прийнята</h2>
+    <div class="mb-3">
+        <a href="{% url 'index' %}" class="btn btn-success mt-3 rounded-20"><i class="fa-solid fa-arrow-left"></i>
+            Повернутися до списку</a>
+    </div>
+</div>
+<div class="spacer"></div>
+{% endblock %}
