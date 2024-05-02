@@ -12,7 +12,7 @@ services:
       - POSTGRES_USER=doc_manager
       - POSTGRES_PASSWORD=grYhCT6Y4oo85lSu
     command: >
-      sh -c "sleep 5 &&
+      sh -c "sleep 30 &&
              python manage.py migrate &&
              python manage.py collectstatic --noinput &&
              gunicorn --bind 0.0.0.0:8000 doc_manager.wsgi:application"
